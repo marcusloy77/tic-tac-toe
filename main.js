@@ -13,8 +13,8 @@ let board = {
     "lastMove" : ""
 }
 
-playermove = 1
-
+let playermove = 1
+let gameFinished = false
 
 function evalBoard(board, playermove) {
     switch(board.lastMove){
@@ -22,7 +22,6 @@ function evalBoard(board, playermove) {
             return false
 
         case "1a":
-            console.log("1a case")
             if(board["1b"] == playermove && board["1c"] == playermove){
                 return true
             }
@@ -141,23 +140,40 @@ function legalMove(board, playermove) {
     }
     return true
 }
+function boardFull(board){
+    if (gameFinished) {
+        return true
+    }
+    for (let [key, value] of Object.entries(board)) {      
+        if (board[key] == 0){
+            return false
+        }
+        
+    }
+    return true
+}
 
-
-function red(event){
+function main(event){
     if(event.target.classList.contains('square')){
-        //checking if move is legal, adding move to board
+        //checking if game is already finished so no more x's to add
+        if(boardFull(board)){
+            return
+        }
+         //checking if move is legal, adding move to board
         if(legalMove(board, event.target.id)){
             board[event.target.id] = playermove
             board["lastMove"] = event.target.id
+            //drawing xs and os
             if(playermove == 1){
                 event.target.textContent = 'X'
             }
             else {
                 event.target.textContent = 'O'
             }
-            
+            //checking if the last move ended in a winner
             if(evalBoard(board, playermove)){
                 console.log(board)
+                gameFinished = 1
                 console.log("player " + playermove + " wins!!!")
             }
             
@@ -170,10 +186,20 @@ function red(event){
                 playermove = 1
             }
         }
-
-        console.log(event.target.id)
     }
-    
 }
 
-bod.addEventListener('click', red)
+function restart(event) {
+    if(event.target.id == "restartBtn"){
+        for (let [key, value] of Object.entries(board)) {
+            board[key] = 0
+            document.getElementById(key).textContent = ""
+            gameFinished = false
+
+        }
+        
+    }
+}
+
+bod.addEventListener('click', main)
+bod.addEventListener('click', restart)
