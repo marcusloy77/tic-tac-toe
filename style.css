@@ -1,0 +1,16 @@
+.square {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    text-align: center;
+    margin: auto;
+}
