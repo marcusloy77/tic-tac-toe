@@ -15,7 +15,21 @@
     margin: auto;
 }
 
-h2 {
+h1 {
+    text-align: center;
     width : 500px;
     height : 40px;
+}
+
+h2 {
+    text-align: center;
+    width : 500px;
+    height : 40px;
+}
+
+section {
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    justify-content: center;
 }
