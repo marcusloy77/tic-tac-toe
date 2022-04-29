@@ -16,6 +16,7 @@ let board = {
 let playermove = 1
 let gameFinished = false
 
+
 function evalBoard(board, playermove) {
     switch(board.lastMove){
         case "":
@@ -141,9 +142,6 @@ function legalMove(board, playermove) {
     return true
 }
 function boardFull(board){
-    if (gameFinished) {
-        return true
-    }
     for (let [key, value] of Object.entries(board)) {      
         if (board[key] == 0){
             return false
@@ -153,10 +151,20 @@ function boardFull(board){
     return true
 }
 
+function declareWinner(playermove){
+    document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!! Cake for All"
+}
+function declareDraw() {
+    document.querySelector('h2').textContent = "Draw :("
+}
+
 function main(event){
     if(event.target.classList.contains('square')){
         //checking if game is already finished so no more x's to add
         if(boardFull(board)){
+            return
+        }
+        if(gameFinished){
             return
         }
          //checking if move is legal, adding move to board
@@ -172,12 +180,13 @@ function main(event){
             }
             //checking if the last move ended in a winner
             if(evalBoard(board, playermove)){
-                console.log(board)
-                gameFinished = 1
-                console.log("player " + playermove + " wins!!!")
+                gameFinished = true
+                declareWinner(playermove)
             }
-            
-
+            //pretty self explanatory with var names
+            if(boardFull(board) && !gameFinished){
+                declareDraw()
+            }
             //switching players
             if(playermove == 1){
                 playermove = 2
@@ -193,11 +202,16 @@ function restart(event) {
     if(event.target.id == "restartBtn"){
         for (let [key, value] of Object.entries(board)) {
             board[key] = 0
-            document.getElementById(key).textContent = ""
-            gameFinished = false
-
+            try {
+                document.getElementById(key).textContent = ""
+            }
+            catch {
+                console.log('trying to fix this loop idk')
+            }
         }
-        
+        gameFinished = false
+        playermove = 1
+        document.querySelector('h2').textContent = "A New Game Has Started"
     }
 }
 
