@@ -1,4 +1,6 @@
 var bod = document.querySelector('body')
+var player1Gifs = document.getElementById('p1')
+var player2Gifs = document.getElementById('p2')
 
 let board = {
     "1a" : 0,
@@ -141,7 +143,7 @@ function legalMove(board, playermove) {
     }
     return true
 }
-function boardFull(board){
+function boardFull(board) {
     for (let [key, value] of Object.entries(board)) {      
         if (board[key] == 0){
             return false
@@ -151,11 +153,28 @@ function boardFull(board){
     return true
 }
 
-function declareWinner(playermove){
+function declareWinner(playermove) {
     document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!! Cake for All"
 }
 function declareDraw() {
     document.querySelector('h2').textContent = "Draw :("
+}
+
+function drawAttack(player) {
+    console.log('a')
+    /*if(player === 1) {
+        console.log("2")
+        player1Gifs.src="./images/ryu-standing.gif"
+
+        
+        player2Gifs.src="./images/ken-standing.gif"
+        
+    }
+    else {
+        player2Gifs.style.transform='scaleX(-1)'
+        player2Gifs.src="./images/kenBigKick.gif"
+    }*/
+
 }
 
 function main(event){
@@ -174,9 +193,11 @@ function main(event){
             //drawing xs and os
             if(playermove == 1){
                 event.target.textContent = 'X'
+                drawAttack(1)
             }
             else {
                 event.target.textContent = 'O'
+                drawAttack(2)
             }
             //checking if the last move ended in a winner
             if(evalBoard(board, playermove)){
