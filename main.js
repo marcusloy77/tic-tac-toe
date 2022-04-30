@@ -1,7 +1,8 @@
 var bod = document.querySelector('body')
 var player1Gifs = document.getElementById('p1')
 var player2Gifs = document.getElementById('p2')
-
+var player1ParentGifs = document.getElementById('p1parent')
+var player2ParentGifs = document.getElementById('p2parent')
 
 let ryuAnims = {
     'stance' : "./images/ryuAnims/ryu-good-original-stance-sfa.gif",
@@ -11,20 +12,32 @@ let ryuAnims = {
     'kick' : "./images/ryuAnims/ryu-sfa-a6.gif",
     'haduken' : "./images/ryuAnims/ken-hdstance.gif",
     'shryD' : "./images/ryuAnims/ken-hdstance.gif",
-    'win' : "",
-    'lose' : ""
+    'win' : "./images/ryuAnims/ryu-sfa-win.gif",
+    'lose' : "./images/ryuAnims/ryu-sfa-win.gif"
 }
 
 function ryuAttack(turnCount) {
-    console.log(turnCount1)
-    //turnCount1 = 3
-    if(turnCount1 == 0){
+    turnCount = 1
+    if(turnCount == 0){
         player1Gifs.src=ryuAnims.p2
-        player1Gifs.style.height = '350px'
+        player1Gifs.style.height = '340px'
+        player1ParentGifs.style.marginTop = '60px'
         setTimeout(function(){
             player1Gifs.src=ryuAnims.stance
             player1Gifs.style.height = '300px'
-        }, 1800)   
+            player1ParentGifs.style.marginTop = '100px'
+        }, 680)   
+    }
+    if(turnCount == 1){
+        player1Gifs.src=ryuAnims.kick
+        player1ParentGifs.style.paddingRight = "40px"
+        player1Gifs.style.height = '285px'
+        setTimeout(function(){
+            player1Gifs.style.height = '300px'
+            player1Gifs.src=ryuAnims.stance
+            player1ParentGifs.style.paddingRight = "0px"
+        }, 1100)
+        
     }
     if(turnCount > 3){
         turnCount1 = 0
@@ -37,9 +50,54 @@ let kenAnims = {
     'kick2' : './images/KenAnims/sf-ken.gif',
     'haduken' : './images/KenAnims/ken-alphafireball.gif',
     'shryD' : './images/KenAnims/ken-sshinryuken.gif',
-    'win' : "",
-    'lose' : ""
+    'win' : "./images/KenAnims/kenWins.gif",
+    'lose' : './images/KenAnims/ken-loss.gif'
 }
+
+function kenAttack(turnCount) {
+    //turnCount = 3
+    if(turnCount == 0){
+        player2Gifs.src=kenAnims.kick1
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+        }, 800)
+        
+    }
+    else if(turnCount == 1){
+        player2Gifs.src=kenAnims.kick2
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 1520)
+    }
+    else if(turnCount == 2){
+        player2Gifs.src=kenAnims.haduken
+        player2Gifs.style.height = '320px'
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 900)
+    }
+    else if(turnCount == 3){
+        player2Gifs.src=kenAnims.shryD
+        player2Gifs.style.height = '670px'
+        player2Gifs.style.position = 'abolute'
+        player2Gifs.style.top = '50%'
+        player2Gifs.style.left = '50%'
+        player2Gifs.style.bottom = '0'
+        player2Gifs.style.right = '0'
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 2000)
+    }
+    
+    console.log(turnCount1)
+    if(turnCount1 > 3){
+        turnCount1 = 0
+    }
+}
+
 
 let turnCount1 = 0
 let turnCount2 = 0
@@ -197,6 +255,15 @@ function boardFull(board) {
 
 function declareWinner(playermove) {
     document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!! Cake for All"
+    if(playermove == 1) {
+        player1Gifs.src=ryuAnims.win
+        player2Gifs.src=kenAnims.lose
+    }
+    else {
+        player1Gifs.src=ryuAnims.lose
+        player2Gifs.src=kenAnims.win
+        
+    }
 }
 function declareDraw() {
     document.querySelector('h2').textContent = "Draw :("
@@ -216,49 +283,6 @@ function drawAttack(player) {
 }
 
 
-function kenAttack(turnCount) {
-    //turnCount1 = 3
-    if(turnCount == 0){
-        player2Gifs.src=kenAnims.kick1
-        setTimeout(function(){
-            player2Gifs.src=kenAnims.stance
-        }, 800)
-        
-    }
-    else if(turnCount == 1){
-        player2Gifs.src=kenAnims.kick2
-        setTimeout(function(){
-            player2Gifs.src=kenAnims.stance
-            player2Gifs.style.height = '300px'
-        }, 1520)
-    }
-    else if(turnCount == 2){
-        player2Gifs.src=kenAnims.haduken
-        player2Gifs.style.height = '320px'
-        setTimeout(function(){
-            player2Gifs.src=kenAnims.stance
-            player2Gifs.style.height = '300px'
-        }, 900)
-    }
-    else if(turnCount == 3){
-        player2Gifs.src=kenAnims.shryD
-        player2Gifs.style.height = '670px'
-        player2Gifs.style.position = 'abolute'
-        player2Gifs.style.top = '50%'
-        player2Gifs.style.left = '50%'
-        player2Gifs.style.bottom = '0'
-        player2Gifs.style.right = '0'
-        setTimeout(function(){
-            player2Gifs.src=kenAnims.stance
-            player2Gifs.style.height = '300px'
-        }, 2000)
-    }
-    
-    console.log(turnCount1)
-    if(turnCount1 > 3){
-        turnCount1 = 0
-    }
-}
 
 
 function main(event){

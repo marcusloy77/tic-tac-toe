@@ -8,12 +8,22 @@
     
     
 }
+.square1 {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    
+    
+}
 
 .board {
     display: grid;
     grid-template-columns: 350px 1fr 1fr 1fr 350px;
     text-align: center;
-    margin: 100px auto;
+    margin: 0px 0 30px 0;
+    max-height: 400px;
 }
 
 h1 {
@@ -31,6 +41,7 @@ h2 {
     text-align: center;
     width : 500px;
     height : 40px;
+    margin-bottom: 0px;
     font-size: 30px;
     color: crimson;
     -webkit-text-stroke-width: 1px;
@@ -50,21 +61,38 @@ section {
     justify-content: center;
 }
 .player2 {
-    width : 100px;
-    padding: 0 0px 0 0px;
+    width : 300px;
+    padding: 100px 0px 0 0px;
     justify-self: center;
     margin-top: 0px;
-}
 
+}
 .player1 {
-    padding: 0 0 0 150px;
+    display: inline-flex;
+    width: 300px;
+    
+    margin: 100px 0 0 0px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+
 }
+#p1 {
+    float: left;
+    margin: 0px 0 0x 0px;
+    height: 300px;
+    object-fit: 100px 300px;
+
+}
+#p2 {
+    padding: 0px 0 0 0px;
+    height: 300px;
+}
+
+
 body {
     background-image: url('./images/background2.jpeg');
     background-position-x: center;
-    background-position-y:bottom;
+    background-position-y:10px;
     padding-bottom: 0;
     border-bottom: 400px solid black;
     border-right: 150px solid black;
