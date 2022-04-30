@@ -191,7 +191,7 @@ function drawAttack(player) {
 
 function kenAttack(turnCount1) {
     console.log(turnCount1)
-    turnCount1 = 3
+    //turnCount1 = 3
     if(turnCount1 == 0){
         player2Gifs.src=kenAnims.kick1
         setTimeout(function(){
