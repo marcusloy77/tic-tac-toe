@@ -3,20 +3,46 @@ var player1Gifs = document.getElementById('p1')
 var player2Gifs = document.getElementById('p2')
 
 
+let ryuAnims = {
+    'stance' : "./images/ryuAnims/ryu-good-original-stance-sfa.gif",
+    'p1' : "./images/ryuAnims/ryu-sfa-a1.gif",
+    'p2' : "./images/ryuAnims/ryu-sfa-a2.gif",
+    'p3' : "./images/ryuAnims/ryu-sfa-a3.gif",
+    'kick' : "./images/ryuAnims/ryu-sfa-a6.gif",
+    'haduken' : "./images/ryuAnims/ken-hdstance.gif",
+    'shryD' : "./images/ryuAnims/ken-hdstance.gif",
+    'win' : "",
+    'lose' : ""
+}
+
+function ryuAttack(turnCount) {
+    console.log(turnCount1)
+    //turnCount1 = 3
+    if(turnCount1 == 0){
+        player1Gifs.src=ryuAnims.p2
+        player1Gifs.style.height = '350px'
+        setTimeout(function(){
+            player1Gifs.src=ryuAnims.stance
+            player1Gifs.style.height = '300px'
+        }, 1800)   
+    }
+    if(turnCount > 3){
+        turnCount1 = 0
+    }
+}
 
 let kenAnims = {
     'stance' : "./images/KenAnims/ken-hdstance.gif",
     'kick1' : './images/KenAnims/ken-sfa-mk.gif',
     'kick2' : './images/KenAnims/sf-ken.gif',
     'haduken' : './images/KenAnims/ken-alphafireball.gif',
-    'shryD' : './images/KenAnims/ken-sshinryuken.gif'
+    'shryD' : './images/KenAnims/ken-sshinryuken.gif',
+    'win' : "",
+    'lose' : ""
 }
 
-
-
-var kenStance = "./images/KenAnims/ken-hdstance.gif"
-var turnCount1 = 0
-var turnCount2 = 0
+let turnCount1 = 0
+let turnCount2 = 0
 
 let board = {
     "1a" : 0,
@@ -179,34 +205,34 @@ function declareDraw() {
 function drawAttack(player) {
     console.log('a')
     if(player === 1) {
-        console.log("2")
-        player1Gifs.src="./images/ryu-standing.gif"
+        ryuAttack(turnCount1)
+        turnCount1 += 1
     }
     else {
-        kenAttack(turnCount1)
-        turnCount1 +=1
+        kenAttack(turnCount2)
+        turnCount2 +=1
     }
 
 }
 
-function kenAttack(turnCount1) {
-    console.log(turnCount1)
+
+function kenAttack(turnCount) {
     //turnCount1 = 3
-    if(turnCount1 == 0){
+    if(turnCount == 0){
         player2Gifs.src=kenAnims.kick1
         setTimeout(function(){
             player2Gifs.src=kenAnims.stance
         }, 800)
         
     }
-    else if(turnCount1 == 1){
+    else if(turnCount == 1){
         player2Gifs.src=kenAnims.kick2
         setTimeout(function(){
             player2Gifs.src=kenAnims.stance
             player2Gifs.style.height = '300px'
         }, 1520)
     }
-    else if(turnCount1 == 2){
+    else if(turnCount == 2){
         player2Gifs.src=kenAnims.haduken
         player2Gifs.style.height = '320px'
         setTimeout(function(){
@@ -214,7 +240,7 @@ function kenAttack(turnCount1) {
             player2Gifs.style.height = '300px'
         }, 900)
     }
-    else if(turnCount1 == 3){
+    else if(turnCount == 3){
         player2Gifs.src=kenAnims.shryD
         player2Gifs.style.height = '670px'
         player2Gifs.style.position = 'abolute'
@@ -291,6 +317,8 @@ function restart(event) {
         gameFinished = false
         playermove = 1
         document.querySelector('h2').textContent = "Round 1: Fight!"
+        turnCount1 = 0
+        turnCount2 = 0
     }
 }
 

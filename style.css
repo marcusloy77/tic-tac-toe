@@ -11,9 +11,9 @@
 
 .board {
     display: grid;
-    grid-template-columns: 3.5fr 1fr 1fr 1fr 3.5fr;
+    grid-template-columns: 350px 1fr 1fr 1fr 350px;
     text-align: center;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 h1 {
@@ -64,9 +64,10 @@ section {
 body {
     background-image: url('./images/background2.jpeg');
     background-position-x: center;
+    background-position-y:bottom;
     padding-bottom: 0;
     border-bottom: 400px solid black;
     border-right: 150px solid black;
     border-left: 150px solid black;
-    margin: 0 0 0 0;
+    margin: 0 0 100px 0;
 }
