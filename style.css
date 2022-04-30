@@ -17,18 +17,32 @@
 }
 
 h1 {
+    font-family: 'Press Start 2P', cursive;
     text-align: center;
     width : 500px;
-    height : 40px;
+    height : 30px;
+    font-size: 35px;
+    color: crimson;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
 }
 
 h2 {
     text-align: center;
     width : 500px;
     height : 40px;
+    font-size: 30px;
+    color: crimson;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
 }
 
 section {
+    background-image: url('./images/titleBannerEdit.jpg');
+    background-size: 500px;
+    background-position-x: center ;
+    background-position-y: 35px ;
+    background-repeat: no-repeat;
     display: grid;
     grid-template-rows: 2fr 1fr;
     place-items: center;
@@ -36,10 +50,10 @@ section {
     justify-content: center;
 }
 .player2 {
-
-    padding: 0 150px 0 0px;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    width : 100px;
+    padding: 0 0px 0 0px;
+    justify-self: center;
+    margin-top: 0px;
 }
 
 .player1 {
@@ -49,4 +63,10 @@ section {
 }
 body {
     background-image: url('./images/background2.jpeg');
+    background-position-x: center;
+    padding-bottom: 0;
+    border-bottom: 400px solid black;
+    border-right: 150px solid black;
+    border-left: 150px solid black;
+    margin: 0 0 0 0;
 }

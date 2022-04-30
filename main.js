@@ -2,6 +2,22 @@ var bod = document.querySelector('body')
 var player1Gifs = document.getElementById('p1')
 var player2Gifs = document.getElementById('p2')
 
+
+
+let kenAnims = {
+    'stance' : "./images/KenAnims/ken-hdstance.gif",
+    'kick1' : './images/KenAnims/ken-sfa-mk.gif',
+    'kick2' : './images/KenAnims/sf-ken.gif',
+    'haduken' : './images/KenAnims/ken-alphafireball.gif',
+    'shryD' : './images/KenAnims/ken-sshinryuken.gif'
+}
+
+
+
+var kenStance = "./images/KenAnims/ken-hdstance.gif"
+var turnCount1 = 0
+var turnCount2 = 0
+
 let board = {
     "1a" : 0,
     "1b" : 0,
@@ -162,20 +178,62 @@ function declareDraw() {
 
 function drawAttack(player) {
     console.log('a')
-    /*if(player === 1) {
+    if(player === 1) {
         console.log("2")
         player1Gifs.src="./images/ryu-standing.gif"
-
-        
-        player2Gifs.src="./images/ken-standing.gif"
-        
     }
     else {
-        player2Gifs.style.transform='scaleX(-1)'
-        player2Gifs.src="./images/kenBigKick.gif"
-    }*/
+        kenAttack(turnCount1)
+        turnCount1 +=1
+    }
 
 }
+
+function kenAttack(turnCount1) {
+    console.log(turnCount1)
+    turnCount1 = 3
+    if(turnCount1 == 0){
+        player2Gifs.src=kenAnims.kick1
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+        }, 800)
+        
+    }
+    else if(turnCount1 == 1){
+        player2Gifs.src=kenAnims.kick2
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 1520)
+    }
+    else if(turnCount1 == 2){
+        player2Gifs.src=kenAnims.haduken
+        player2Gifs.style.height = '320px'
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 900)
+    }
+    else if(turnCount1 == 3){
+        player2Gifs.src=kenAnims.shryD
+        player2Gifs.style.height = '670px'
+        player2Gifs.style.position = 'abolute'
+        player2Gifs.style.top = '50%'
+        player2Gifs.style.left = '50%'
+        player2Gifs.style.bottom = '0'
+        player2Gifs.style.right = '0'
+        setTimeout(function(){
+            player2Gifs.src=kenAnims.stance
+            player2Gifs.style.height = '300px'
+        }, 2000)
+    }
+    
+    console.log(turnCount1)
+    if(turnCount1 > 3){
+        turnCount1 = 0
+    }
+}
+
 
 function main(event){
     if(event.target.classList.contains('square')){
