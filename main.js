@@ -10,25 +10,32 @@ let ryuAnims = {
     'p2' : "./images/ryuAnims/ryu-sfa-a2.gif",
     'p3' : "./images/ryuAnims/ryu-sfa-a3.gif",
     'kick' : "./images/ryuAnims/ryu-sfa-a6.gif",
-    'haduken' : "./images/ryuAnims/ken-hdstance.gif",
-    'shryD' : "./images/ryuAnims/ken-hdstance.gif",
+    'haduken' : "./images/ryuAnims/ryu-hadoken11.gif",
+    'bigHaduken' : "./images/ryuAnims/ryu-classic-alpha-super3.gif",
     'win' : "./images/ryuAnims/ryu-sfa-win.gif",
     'lose' : "./images/ryuAnims/ryu-sfa-win.gif"
 }
 
 function ryuAttack(turnCount) {
-    turnCount = 1
-    if(turnCount == 0){
-        player1Gifs.src=ryuAnims.p2
-        player1Gifs.style.height = '340px'
-        player1ParentGifs.style.marginTop = '60px'
-        setTimeout(function(){
-            player1Gifs.src=ryuAnims.stance
-            player1Gifs.style.height = '300px'
-            player1ParentGifs.style.marginTop = '100px'
-        }, 680)   
-    }
+    turnCount = 2
     if(turnCount == 1){
+        player1Gifs.src=ryuAnims.p1
+        player1Gifs.style.height = '290px'
+        player1ParentGifs.style.marginTop = '210px'
+        setTimeout(function(){
+            player1Gifs.src=ryuAnims.p3
+            player1Gifs.style.height = '290px'
+            player1ParentGifs.style.marginTop = '210px'
+
+            setTimeout(function(){
+                player1Gifs.src=ryuAnims.stance
+                player1Gifs.style.height = '300px'
+                player1ParentGifs.style.marginTop = '200px'
+            }, 680)
+
+        }, 300)   
+    }
+    if(turnCount == 0){
         player1Gifs.src=ryuAnims.kick
         player1ParentGifs.style.paddingRight = "40px"
         player1Gifs.style.height = '285px'
@@ -39,6 +46,37 @@ function ryuAttack(turnCount) {
         }, 1100)
         
     }
+    if(turnCount == 2){
+        player1Gifs.src=ryuAnims.haduken
+        player1ParentGifs.style.marginTop = "170px"
+        player1ParentGifs.style.paddingRight = "40px"
+        player1Gifs.style.height = '340px'
+        player1Gifs.style.transform = 'scaleX(-1)';
+        setTimeout(function(){
+            player1ParentGifs.style.marginTop = "200px"
+            player1Gifs.style.transform = 'scaleX(+1)'
+            player1Gifs.style.height = '300px'
+            player1Gifs.src=ryuAnims.stance
+            player1ParentGifs.style.paddingRight = "0px"
+        }, 790)
+        
+    }
+
+    if(turnCount == 3){
+        player1Gifs.src=ryuAnims.bigHaduken
+        player1Gifs.style.height = '450px'
+        player1ParentGifs.style.paddingRight = "210px"
+        player1Gifs.style.transform = 'scaleX(-1)';
+        player1ParentGifs.style.marginTop = '110px'
+        setTimeout(function(){
+            player1Gifs.style.transform = 'scaleX(+1)'
+            player1ParentGifs.style.marginTop = '200px'
+            player1Gifs.style.height = '300px'
+            player1Gifs.src=ryuAnims.stance
+            player1ParentGifs.style.paddingRight = "0px"
+        }, 4300)
+    }
+
     if(turnCount > 3){
         turnCount1 = 0
     }
@@ -80,13 +118,13 @@ function kenAttack(turnCount) {
     }
     else if(turnCount == 3){
         player2Gifs.src=kenAnims.shryD
-        player2Gifs.style.height = '670px'
-        player2Gifs.style.position = 'abolute'
-        player2Gifs.style.top = '50%'
-        player2Gifs.style.left = '50%'
-        player2Gifs.style.bottom = '0'
-        player2Gifs.style.right = '0'
+        player2Gifs.style.height = '460px'
+        player2ParentGifs.style.marginTop = '40px'
+        player2ParentGifs.style.marginRight = '145px'
+        
         setTimeout(function(){
+            player2ParentGifs.style.marginTop = '200px'
+            player2ParentGifs.style.marginRight = '0px'
             player2Gifs.src=kenAnims.stance
             player2Gifs.style.height = '300px'
         }, 2000)
