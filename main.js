@@ -17,7 +17,7 @@ let ryuAnims = {
 }
 
 function ryuAttack(turnCount) {
-    turnCount = 2
+    
     if(turnCount == 1){
         player1Gifs.src=ryuAnims.p1
         player1Gifs.style.height = '290px'
