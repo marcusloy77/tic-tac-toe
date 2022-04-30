@@ -232,7 +232,7 @@ function restart(event) {
         }
         gameFinished = false
         playermove = 1
-        document.querySelector('h2').textContent = "A New Game Has Started"
+        document.querySelector('h2').textContent = "Round 1: Fight!"
     }
 }
 
