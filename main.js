@@ -3,6 +3,9 @@ var player1Gifs = document.getElementById('p1')
 var player2Gifs = document.getElementById('p2')
 var player1ParentGifs = document.getElementById('p1parent')
 var player2ParentGifs = document.getElementById('p2parent')
+let turnCount1 = 0
+let turnCount2 = 0
+
 
 let ryuAnims = {
     'stance' : "./images/ryuAnims/ryu-good-original-stance-sfa.gif",
@@ -93,10 +96,12 @@ let kenAnims = {
 }
 
 function kenAttack(turnCount) {
-    //turnCount = 3
+    turnCount = 0
     if(turnCount == 0){
         player2Gifs.src=kenAnims.kick1
+        player2ParentGifs.style.marginRight = '170px'
         setTimeout(function(){
+            player2ParentGifs.style.marginRight = '0px'
             player2Gifs.src=kenAnims.stance
         }, 800)
         
@@ -137,8 +142,6 @@ function kenAttack(turnCount) {
 }
 
 
-let turnCount1 = 0
-let turnCount2 = 0
 
 let board = {
     "1a" : 0,
