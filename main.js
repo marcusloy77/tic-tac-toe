@@ -96,7 +96,7 @@ let kenAnims = {
 }
 
 function kenAttack(turnCount) {
-    turnCount = 0
+    //turnCount = 0
     if(turnCount == 0){
         player2Gifs.src=kenAnims.kick1
         player2ParentGifs.style.marginRight = '170px'
