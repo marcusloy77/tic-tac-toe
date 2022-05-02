@@ -6,6 +6,43 @@ var player2ParentGifs = document.getElementById('p2parent')
 let turnCount1 = 0
 let turnCount2 = 0
 
+let stageSounds = {
+    '1' : './sounds/stage/1.mp3',
+    '2' : './sounds/stage/2.mp3',
+    '3' : './sounds/stage/3.mp3',
+    '4' : './sounds/stage/4.mp3',
+    'fight' : './sounds/stage/fight.mp3',
+    'round' : './sounds/stage/round.mp3',
+    'startMus' : './sounds/stage/street-fighter-start.mp3',
+    'ko' : './sounds/stage/streetfighterko.mp3',
+    'youwin' : './sounds/stage/you-win-street-fighter.mp3',
+    'you' : './sounds/stage/you.mp3',
+
+}
+let ryuSounds = {
+    'punch1' : './sounds/stage/punch.mp3',
+    'punch2' : './sounds/stage/punch (1).mp3',
+    'punch3' : './sounds/stage/punch (2).mp3',
+    'hadouken' : './sounds/ryu/hadouken.mp3',
+    'kick' : './sounds/ryu/ryuken-kick.mp3',
+    'death' : './sounds/ryu/ryus-death.mp3',
+    'shoyuken' : './sounds/ryu/shoyuken.mp3',
+}
+let kenSounds = {
+    'punch1' : './sounds/stage/punch.mp3',
+    'punch2' : './sounds/stage/punch (1).mp3',
+    'punch3' : './sounds/stage/punch (2).mp3',
+    'hadouken' : './sounds/ken/kens-hadouken.mp3',
+    'kick' : './sounds/ryu/ryuken-kick.mp3',
+    'death' : './sounds/ken/kens-death.mp3',
+    'shoyuken' : './sounds/ryu/shoyuken.mp3',
+
+}
+
+function soundPlayer(sound) {
+    let audio = new Audio(sound);
+    audio.play();
+}
 
 let ryuAnims = {
     'stance' : "./images/ryuAnims/ryu-good-original-stance-sfa.gif",
@@ -22,10 +59,12 @@ let ryuAnims = {
 function ryuAttack(turnCount) {
     
     if(turnCount == 1){
+        soundPlayer(ryuSounds.punch2)
         player1Gifs.src=ryuAnims.p1
         player1Gifs.style.height = '290px'
         player1ParentGifs.style.marginTop = '210px'
         setTimeout(function(){
+            soundPlayer(ryuSounds.punch1)
             player1Gifs.src=ryuAnims.p3
             player1Gifs.style.height = '290px'
             player1ParentGifs.style.marginTop = '210px'
@@ -39,6 +78,7 @@ function ryuAttack(turnCount) {
         }, 300)   
     }
     if(turnCount == 0){
+        soundPlayer(ryuSounds.kick)
         player1Gifs.src=ryuAnims.kick
         player1ParentGifs.style.paddingRight = "40px"
         player1Gifs.style.height = '285px'
@@ -50,6 +90,7 @@ function ryuAttack(turnCount) {
         
     }
     if(turnCount == 2){
+        soundPlayer(ryuSounds.hadouken)
         player1Gifs.src=ryuAnims.haduken
         player1ParentGifs.style.marginTop = "170px"
         player1ParentGifs.style.paddingRight = "40px"
@@ -295,7 +336,8 @@ function boardFull(board) {
 }
 
 function declareWinner(playermove) {
-    //somehow do KO here
+    
+    soundPlayer(stageSounds.ko)
     document.getElementById('KOimg').src= "./images/KOMain.gif"
     
     document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!!"
@@ -317,10 +359,12 @@ function drawAttack(player) {
     console.log('a')
     if(player === 1) {
         ryuAttack(turnCount1)
+        //drawShake(turnCount1, player)
         turnCount1 += 1
     }
     else {
         kenAttack(turnCount2)
+        //drawShake(turnCount2)
         turnCount2 +=1
     }
 
@@ -331,6 +375,7 @@ function drawAttack(player) {
 
 function main(event){
     if(event.target.classList.contains('square')){
+        
         //checking if game is already finished so no more x's to add
         if(boardFull(board)){
             return
@@ -387,8 +432,15 @@ function restart(event) {
         document.querySelector('h2').textContent = "Round 1: Fight!"
         turnCount1 = 0
         turnCount2 = 0
+        document.getElementById('KOimg').src= 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+        player1Gifs.src=ryuAnims.stance
+        player2Gifs.src=kenAnims.stance
     }
 }
 
 bod.addEventListener('click', main)
 bod.addEventListener('click', restart)
+
+
+
+
