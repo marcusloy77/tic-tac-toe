@@ -24,6 +24,7 @@ let ryuSounds = {
     'punch2' : './sounds/stage/punch (1).mp3',
     'punch3' : './sounds/stage/punch (2).mp3',
     'hadouken' : './sounds/ryu/hadouken.mp3',
+    'hadouken2' : './sounds/ryu/hadouken.mp3',
     'kick' : './sounds/ryu/ryuken-kick.mp3',
     'death' : './sounds/ryu/ryus-death.mp3',
     'shoyuken' : './sounds/ryu/shoyuken.mp3',
@@ -90,7 +91,7 @@ function ryuAttack(turnCount) {
         
     }
     if(turnCount == 2){
-        soundPlayer(ryuSounds.hadouken)
+        soundPlayer(ryuSounds.hadouken2)
         player1Gifs.src=ryuAnims.haduken
         player1ParentGifs.style.marginTop = "170px"
         player1ParentGifs.style.paddingRight = "40px"
