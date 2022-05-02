@@ -295,7 +295,10 @@ function boardFull(board) {
 }
 
 function declareWinner(playermove) {
-    document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!! Cake for All"
+    //somehow do KO here
+    document.getElementById('KOimg').src= "./images/KOMain.gif"
+    
+    document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!!"
     if(playermove == 1) {
         player1Gifs.src=ryuAnims.win
         player2Gifs.src=kenAnims.lose
