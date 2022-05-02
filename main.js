@@ -347,12 +347,12 @@ function declareWinner(playermove) {
     
     document.querySelector('h2').textContent = "Player " + playermove +" Wins!!!!"
     if(playermove == 1) {
-        player1Gifs.src=ryuAnims.win
-        player2Gifs.src=kenAnims.lose
+        //player1Gifs.src=ryuAnims.win
+        //player2Gifs.src=kenAnims.lose
     }
     else {
-        player1Gifs.src=ryuAnims.lose
-        player2Gifs.src=kenAnims.win
+        //player1Gifs.src=ryuAnims.lose
+        //player2Gifs.src=kenAnims.win
         
     }
 }
