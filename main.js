@@ -5,6 +5,7 @@ var player1ParentGifs = document.getElementById('p1parent')
 var player2ParentGifs = document.getElementById('p2parent')
 let turnCount1 = 0
 let turnCount2 = 0
+let round = 1
 
 let stageSounds = {
     '1' : './sounds/stage/1.mp3',
@@ -24,7 +25,7 @@ let ryuSounds = {
     'punch2' : './sounds/stage/punch (1).mp3',
     'punch3' : './sounds/stage/punch (2).mp3',
     'hadouken' : './sounds/ryu/hadouken.mp3',
-    'hadouken2' : './sounds/ryu/hadouken.mp3',
+    'hadouken2' : './sounds/ryu/hadouken2.mp3',
     'kick' : './sounds/ryu/ryuken-kick.mp3',
     'death' : './sounds/ryu/ryus-death.mp3',
     'shoyuken' : './sounds/ryu/shoyuken.mp3',
@@ -91,7 +92,7 @@ function ryuAttack(turnCount) {
         
     }
     if(turnCount == 2){
-        soundPlayer(ryuSounds.hadouken2)
+        soundPlayer(ryuSounds.hadouken)
         player1Gifs.src=ryuAnims.haduken
         player1ParentGifs.style.marginTop = "170px"
         player1ParentGifs.style.paddingRight = "40px"
@@ -108,7 +109,7 @@ function ryuAttack(turnCount) {
     }
 
     if(turnCount == 3){
-        soundPlayer(ryuSounds.hadouken)
+        soundPlayer(ryuSounds.hadouken2)
         player1Gifs.src=ryuAnims.bigHaduken
         player1Gifs.style.height = '450px'
         player1ParentGifs.style.paddingRight = "210px"
@@ -357,7 +358,7 @@ function declareWinner(playermove) {
     }
 }
 function declareDraw() {
-    document.querySelector('h2').textContent = "Draw :("
+    document.querySelector('h2').textContent = "Draw! Play Again?"
 }
 
 function drawAttack(player) {
@@ -434,7 +435,8 @@ function restart(event) {
         }
         gameFinished = false
         playermove = 1
-        document.querySelector('h2').textContent = "Round 1: Fight!"
+        round = round+1
+        document.querySelector('h2').textContent = "Round " + round + ": Fight!"
         turnCount1 = 0
         turnCount2 = 0
         document.getElementById('KOimg').src= 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
