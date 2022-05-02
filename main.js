@@ -78,7 +78,7 @@ function ryuAttack(turnCount) {
         }, 300)   
     }
     if(turnCount == 0){
-        soundPlayer(ryuSounds.kick)
+        soundPlayer(ryuSounds.punch1)
         player1Gifs.src=ryuAnims.kick
         player1ParentGifs.style.paddingRight = "40px"
         player1Gifs.style.height = '285px'
@@ -107,6 +107,7 @@ function ryuAttack(turnCount) {
     }
 
     if(turnCount == 3){
+        soundPlayer(ryuSounds.hadouken)
         player1Gifs.src=ryuAnims.bigHaduken
         player1Gifs.style.height = '450px'
         player1ParentGifs.style.paddingRight = "210px"
@@ -139,6 +140,7 @@ let kenAnims = {
 function kenAttack(turnCount) {
     //turnCount = 0
     if(turnCount == 0){
+        soundPlayer(kenSounds.punch3)
         player2Gifs.src=kenAnims.kick1
         player2ParentGifs.style.marginRight = '170px'
         setTimeout(function(){
@@ -155,6 +157,7 @@ function kenAttack(turnCount) {
         }, 1520)
     }
     else if(turnCount == 2){
+        soundPlayer(kenSounds.hadouken)
         player2Gifs.src=kenAnims.haduken
         player2Gifs.style.height = '320px'
         setTimeout(function(){
@@ -163,6 +166,7 @@ function kenAttack(turnCount) {
         }, 900)
     }
     else if(turnCount == 3){
+        soundPlayer(kenSounds.shoyuken)
         player2Gifs.src=kenAnims.shryD
         player2Gifs.style.height = '460px'
         player2ParentGifs.style.marginTop = '40px'
