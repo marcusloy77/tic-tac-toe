@@ -377,8 +377,6 @@ function drawAttack(player) {
 }
 
 
-
-
 function main(event){
     if(event.target.classList.contains('square')){
         
