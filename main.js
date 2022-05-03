@@ -130,13 +130,13 @@ function ryuAttack(turnCount) {
 }
 
 let kenAnims = {
-    'stance' : "./images/KenAnims/ken-hdstance.gif",
-    'kick1' : './images/KenAnims/ken-sfa-mk.gif',
-    'kick2' : './images/KenAnims/sf-ken.gif',
-    'haduken' : './images/KenAnims/ken-alphafireball.gif',
-    'shryD' : './images/KenAnims/ken-sshinryuken.gif',
-    'win' : "./images/KenAnims/kenWins.gif",
-    'lose' : './images/KenAnims/ken-loss.gif'
+    'stance' : "./images/kenAnims/ken-hdstance.gif",
+    'kick1' : './images/kenAnims/ken-sfa-mk.gif',
+    'kick2' : './images/kenAnims/sf-ken.gif',
+    'haduken' : './images/kenAnims/ken-alphafireball.gif',
+    'shryD' : './images/kenAnims/ken-sshinryuken.gif',
+    'win' : "./images/kenAnims/kenWins.gif",
+    'lose' : './images/kenAnims/ken-loss.gif'
 }
 
 function kenAttack(turnCount) {
